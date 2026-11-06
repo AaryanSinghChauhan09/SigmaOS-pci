@@ -1,10 +1,11 @@
 [package]
-name = "SigmaOS-pci"
+name = "sigmaos_pci"
 version = "0.1.0"
 edition = "2021"
-license = "Apache-2.0"
-description = "SigmaOS component - part of multi-repository architecture"
+description = "SigmaOS PCI bus model: BDF addressing, devices, configuration space, BARs, drivers"
 
 [lib]
-name = "pci"
+name = "sigmaos_pci"
 path = "src/lib.rs"
+
+[dependencies]

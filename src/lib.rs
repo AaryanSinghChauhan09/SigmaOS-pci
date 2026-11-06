@@ -1,31 +1,15 @@
-// SPDX-License-Identifier: Apache-2.0
-//! SigmaOS-pci - Multimedia/Office/Networking component
-//! Part of SigmaOS multi-repository architecture
+//! SigmaOS-pci — PCI bus model.
+//!
+//! Models PCI devices, BDF (bus/device/function), configuration space,
+//! BARs (Base Address Registers), and PCI driver management.
+//! Deterministic and std-only (no actual hardware access).
 
-#![no_std]
+pub mod pci;
+pub mod device;
+pub mod cfg;
+pub mod driver;
 
-/// Component
-pub struct Component {
-    name: &'static str,
-}
-
-impl Component {
-    pub fn new() -> Self {
-        Self { name: "SigmaOS-pci" }
-    }
-}
-
-impl Default for Component {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test_creation() {
-        let c = super::Component::new();
-        assert_eq!(c.name, "SigmaOS-pci");
-    }
-}
+pub use pci::{PciBus, PciAddress};
+pub use device::{PciDevice, PciClass, PciVendor};
+pub use cfg::{ConfigSpace, Bar};
+pub use driver::{PciDriver, DriverManager};
